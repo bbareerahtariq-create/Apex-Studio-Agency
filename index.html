@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Studio | Next-Gen Digital Web Agency & UI/UX Design Studio</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=display" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#030712',
+                        cardbg: '#0f172a',
+                        neonPurple: '#a855f7',
+                        neonCyan: '#06b6d4',
+                        neonTeal: '#14b8a6',
+                        brandAccent: '#8b5cf6'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3.5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Aesthetics CSS -->
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel-hover:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.25);
+            transform: translateY(-4px);
+        }
+
+        /* Neon Glow Utility */
+        .glow-text {
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+        }
+
+        .glow-cyan-text {
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+        }
+
+        .glow-border {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+
+        /* Custom Slider Range Styling */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            cursor: pointer;
+            box-shadow: 0 0 10px #8b5cf6;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-purple-500 selection:text-white">
+
+    <!-- Top Portfolio Demo Announcement Bar -->
+    <div id="demo-top-bar" class="bg-gradient-to-r from-purple-950 via-slate-900 to-cyan-950 text-slate-200 text-xs sm:text-sm py-2 px-4 border-b border-purple-500/20 flex justify-between items-center z-50 sticky top-0">
+        <div class="flex-1 text-center font-medium">
+            <span class="inline-block bg-purple-500/20 text-purple-300 text-xs px-2.5 py-0.5 rounded border border-purple-400/30 mr-2 font-mono">CLIENT PORTFOLIO DEMO</span>
+            High-Converting Digital Web Agency & Studio Showcase &bull; Interactive Calculator & Case Studies Enabled
+        </div>
+        <button onclick="document.getElementById('demo-top-bar').remove()" class="text-slate-400 hover:text-white ml-2">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <!-- Floating Glassmorphism Navigation Bar -->
+    <header class="sticky top-8 z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full transition-all duration-300 my-2">
+        <nav class="glass-panel rounded-2xl px-6 py-4 flex items-center justify-between border border-slate-800 shadow-2xl">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-cyan-500 to-teal-400 p-0.5 group-hover:scale-105 transition duration-300">
+                    <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid fa-cubes text-cyan-400 text-lg group-hover:rotate-12 transition duration-300"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-tight text-white leading-none">APEX<span class="text-purple-400">.</span>STUDIO</span>
+                    <span class="text-[10px] font-mono tracking-widest text-cyan-400 uppercase">Digital Experience Engine</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+                <a href="#services" class="hover:text-purple-400 transition-colors">Services</a>
+                <a href="#portfolio" class="hover:text-purple-400 transition-colors">Work</a>
+                <a href="#calculator" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                    <span>Estimator</span>
+                    <span class="bg-cyan-500/20 text-cyan-300 text-[10px] px-1.5 py-0.5 rounded border border-cyan-400/30">Interactive</span>
+                </a>
+                <a href="#pricing" class="hover:text-purple-400 transition-colors">Pricing</a>
+                <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
+                <a href="#contact" class="hover:text-purple-400 transition-colors">Contact</a>
+            </div>
+
+            <!-- Header CTA & Actions -->
+            <div class="hidden md:flex items-center gap-4">
+                <button onclick="scrollToSection('calculator')" class="text-xs font-mono text-purple-300 hover:text-white px-3 py-2 border border-purple-500/30 rounded-xl hover:bg-purple-500/10 transition">
+                    <i class="fa-solid fa-calculator mr-1"></i> Cost Calculator
+                </button>
+                <a href="#contact" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-semibold rounded-xl group bg-gradient-to-r from-purple-600 to-cyan-500 text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition">
+                    <span class="px-5 py-2.5 bg-slate-950 rounded-[10px] group-hover:bg-opacity-0 transition duration-300 flex items-center gap-2">
+                        <span>Get Started</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-toggle-btn" class="md:hidden text-slate-300 hover:text-white text-xl p-2 focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-drawer" class="hidden md:hidden glass-panel mt-2 rounded-2xl p-6 border border-slate-800 space-y-4 shadow-2xl">
+            <a href="#services" onclick="closeMobileDrawer()" class="block text-slate-200 hover:text-purple-400 py-1 font-semibold">Services</a>
+            <a href="#portfolio" onclick="closeMobileDrawer()" class="block text-slate-200 hover:text-purple-400 py-1 font-semibold">Work Showcase</a>
+            <a href="#calculator" onclick="closeMobileDrawer()" class="block text-cyan-400 py-1 font-semibold">Project Estimator</a>
+            <a href="#pricing" onclick="closeMobileDrawer()" class="block text-slate-200 hover:text-purple-400 py-1 font-semibold">Pricing Plans</a>
+            <a href="#about" onclick="closeMobileDrawer()" class="block text-slate-200 hover:text-purple-400 py-1 font-semibold">About Studio</a>
+            <a href="#contact" onclick="closeMobileDrawer()" class="block text-slate-200 hover:text-purple-400 py-1 font-semibold">Contact Us</a>
+            <div class="pt-4 border-t border-slate-800 flex flex-col gap-3">
+                <a href="#contact" onclick="closeMobileDrawer()" class="w-full text-center bg-gradient-to-r from-purple-600 to-cyan-500 text-white py-3 rounded-xl font-bold">Book Discovery Call</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative pt-16 pb-24 lg:pt-28 lg:pb-36 overflow-hidden">
+            <!-- Background Radial Glows -->
+            <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-purple-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+            <div class="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-4xl mx-auto">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-purple-500/30 text-purple-300 text-xs sm:text-sm font-semibold mb-8 animate-float shadow-lg">
+                        <span class="flex h-2 w-2 rounded-full bg-teal-400 animate-ping"></span>
+                        <span>⚡ Next-Gen Web Engineering & Branding Studio</span>
+                        <i class="fa-solid fa-sparkles text-cyan-400"></i>
+                    </div>
+
+                    <!-- Headline -->
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-8 leading-[1.1]">
+                        We Build Digital Experiences That <br class="hidden sm:inline">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-cyan-300 to-teal-300 glow-text">
+                            Scale High-Growth Businesses
+                        </span>
+                    </h1>
+
+                    <!-- Supporting Text -->
+                    <p class="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                        Apex Studio designs and engineers hyper-fast web applications, e-commerce stores, and high-converting brand platforms for forward-thinking companies.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                        <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold text-base shadow-xl shadow-purple-600/30 transition duration-300 flex items-center justify-center gap-3">
+                            <span>Explore Our Work</span>
+                            <i class="fa-solid fa-arrow-down text-sm"></i>
+                        </a>
+                        <button onclick="openDiscoveryModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel hover:bg-slate-800/90 text-slate-200 font-semibold text-base border border-slate-700 transition duration-300 flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-calendar-check text-cyan-400"></i>
+                            <span>Book Discovery Call</span>
+                        </button>
+                    </div>
+
+                    <!-- Floating Animated Stat Badges Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-slate-800/80">
+                        <div class="glass-panel p-6 rounded-2xl border border-slate-800/90 text-center">
+                            <div class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-300 font-mono mb-1">120+</div>
+                            <div class="text-slate-400 text-xs sm:text-sm font-semibold">Web Projects Delivered</div>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl border border-slate-800/90 text-center">
+                            <div class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-300 font-mono mb-1">99.8%</div>
+                            <div class="text-slate-400 text-xs sm:text-sm font-semibold">Client Satisfaction Score</div>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl border border-slate-800/90 text-center">
+                            <div class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-emerald-400 font-mono mb-1">$15M+</div>
+                            <div class="text-slate-400 text-xs sm:text-sm font-semibold">Client Revenue Generated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section with Tech Stack Drawers -->
+        <section id="services" class="py-24 relative bg-slate-950/60 border-t border-slate-800/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-mono font-bold text-cyan-400 tracking-wider uppercase mb-3">Core Expertise</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Full-Spectrum Digital Services</p>
+                    <p class="text-slate-400 mt-4 text-base">From initial architecture to high-converting user interfaces, we handle every detail.</p>
+                </div>
+
+                <!-- Services Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Custom Web Development</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                High-performance single-page web applications, SaaS dashboards, and dynamic client portals built for speed and security.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-purple-300 text-xs font-mono border border-slate-800">React.js</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-purple-300 text-xs font-mono border border-slate-800">Next.js</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-purple-300 text-xs font-mono border border-slate-800">Tailwind CSS</span>
+                            </div>
+                        </div>
+                        <button onclick="toggleServiceDrawer(1)" class="text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-2 pt-4 border-t border-slate-800">
+                            <span>Explore Tech Stack Specs</span>
+                            <i id="service-arrow-1" class="fa-solid fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div id="service-drawer-1" class="hidden mt-4 pt-4 border-t border-slate-800/60 text-xs text-slate-400 leading-relaxed">
+                            Includes SSR performance optimization, REST & GraphQL API integrations, automated CI/CD pipeline deployment, and lighthouse 95+ score optimization.
+                        </div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-pen-ruler"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">UI/UX Product Design</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                Human-centric digital interfaces, wireframes, interactive Figma prototypes, and scalable design systems that drive engagement.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-cyan-300 text-xs font-mono border border-slate-800">Figma</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-cyan-300 text-xs font-mono border border-slate-800">Design Systems</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-cyan-300 text-xs font-mono border border-slate-800">User Testing</span>
+                            </div>
+                        </div>
+                        <button onclick="toggleServiceDrawer(2)" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-2 pt-4 border-t border-slate-800">
+                            <span>Explore Design Workflow</span>
+                            <i id="service-arrow-2" class="fa-solid fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div id="service-drawer-2" class="hidden mt-4 pt-4 border-t border-slate-800/60 text-xs text-slate-400 leading-relaxed">
+                            End-to-end UX research, customer journey mapping, interactive clickable micro-prototypes, and developer-ready Figma component tokens.
+                        </div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">E-Commerce Engineering</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                                Modern, secure online shopping experiences with dynamic shopping carts, seamless payment gateway integrations, and instant checkout.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-teal-300 text-xs font-mono border border-slate-800">Headless Shopify</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-teal-300 text-xs font-mono border border-slate-800">WooCommerce</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-teal-300 text-xs font-mono border border-slate-800">Stripe/PKR Gateways</span>
+                            </div>
+                        </div>
+                        <button onclick="toggleServiceDrawer(3)" class="text-xs font-semibold text-teal-400 hover:text-teal-300 flex items-center gap-2 pt-4 border-t border-slate-800">
+                            <span>Explore E-Com Capabilities</span>
+                            <i id="service-arrow-3" class="fa-solid fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div id="service-drawer-3" class="hidden mt-4 pt-4 border-t border-slate-800/60 text-xs text-slate-400 leading-relaxed">
+                            Custom inventory sync, multi-currency support, cart abandonment triggers, and conversion-optimized checkout layouts.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Work Showcase Grid with Filtering & Case Study Modals -->
+        <section id="portfolio" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-mono font-bold text-purple-400 tracking-wider uppercase mb-3">Selected Projects</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Recent Work & Client Case Studies</p>
+                    <p class="text-slate-400 mt-4 text-base">Click any case study to open detailed technical metrics and interactive breakdowns.</p>
+                </div>
+
+                <!-- Portfolio Category Filter Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+                    <button onclick="filterPortfolio('all')" class="portfolio-filter-btn active px-5 py-2.5 rounded-xl text-xs font-semibold transition border border-purple-500/50 bg-purple-500/20 text-white">All Projects</button>
+                    <button onclick="filterPortfolio('webapp')" class="portfolio-filter-btn px-5 py-2.5 rounded-xl text-xs font-semibold transition border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white">Web Apps</button>
+                    <button onclick="filterPortfolio('ecommerce')" class="portfolio-filter-btn px-5 py-2.5 rounded-xl text-xs font-semibold transition border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white">E-Commerce</button>
+                    <button onclick="filterPortfolio('branding')" class="portfolio-filter-btn px-5 py-2.5 rounded-xl text-xs font-semibold transition border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white">Branding</button>
+                </div>
+
+                <!-- Portfolio Projects Grid -->
+                <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Item 1 -->
+                    <div class="portfolio-card glass-panel rounded-2xl overflow-hidden border border-slate-800 group" data-category="ecommerce">
+                        <div class="relative overflow-hidden h-52">
+                            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop&q=80" alt="NexaMart Store" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                                <button onclick="openCaseStudy(1)" class="px-5 py-2.5 rounded-xl bg-purple-600 text-white text-xs font-bold shadow-lg flex items-center gap-2">
+                                    <span>View Case Study</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </button>
+                            </div>
+                            <span class="absolute top-3 left-3 px-3 py-1 bg-slate-950/80 backdrop-blur-md text-teal-300 text-[11px] font-mono rounded-lg border border-teal-500/30">E-Commerce</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">NexaMart Shopping Portal</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed mb-4">Complete modern e-commerce platform with PKR payment calculations and dynamic cart persistence.</p>
+                            <div class="flex items-center justify-between text-xs text-purple-400 font-mono pt-3 border-t border-slate-800/80">
+                                <span>Conversion: +140%</span>
+                                <span>React • Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 2 -->
+                    <div class="portfolio-card glass-panel rounded-2xl overflow-hidden border border-slate-800 group" data-category="webapp">
+                        <div class="relative overflow-hidden h-52">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80" alt="FinPulse Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                                <button onclick="openCaseStudy(2)" class="px-5 py-2.5 rounded-xl bg-purple-600 text-white text-xs font-bold shadow-lg flex items-center gap-2">
+                                    <span>View Case Study</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </button>
+                            </div>
+                            <span class="absolute top-3 left-3 px-3 py-1 bg-slate-950/80 backdrop-blur-md text-purple-300 text-[11px] font-mono rounded-lg border border-purple-500/30">Web App</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">FinPulse Analytics Engine</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed mb-4">Real-time financial SaaS analytics dashboard processing 1M+ daily telemetry events.</p>
+                            <div class="flex items-center justify-between text-xs text-purple-400 font-mono pt-3 border-t border-slate-800/80">
+                                <span>Latency: 18ms</span>
+                                <span>Next.js • Chart.js</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 3 -->
+                    <div class="portfolio-card glass-panel rounded-2xl overflow-hidden border border-slate-800 group" data-category="branding">
+                        <div class="relative overflow-hidden h-52">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80" alt="Aether Real Estate" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                                <button onclick="openCaseStudy(3)" class="px-5 py-2.5 rounded-xl bg-purple-600 text-white text-xs font-bold shadow-lg flex items-center gap-2">
+                                    <span>View Case Study</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </button>
+                            </div>
+                            <span class="absolute top-3 left-3 px-3 py-1 bg-slate-950/80 backdrop-blur-md text-cyan-300 text-[11px] font-mono rounded-lg border border-cyan-500/30">Branding</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Aether Luxury Real Estate</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed mb-4">Luxury property brand identity and immersive 3D virtual tour showcase landing page.</p>
+                            <div class="flex items-center justify-between text-xs text-purple-400 font-mono pt-3 border-t border-slate-800/80">
+                                <span>Leads: +220%</span>
+                                <span>WebGL • Figma</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Interactive Project Cost Estimator / Pricing Calculator -->
+        <section id="calculator" class="py-24 relative bg-slate-950/80 border-t border-b border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-mono font-bold text-cyan-400 tracking-wider uppercase mb-3">Interactive Estimator</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Project Cost & Timeline Calculator</p>
+                    <p class="text-slate-400 mt-4 text-base">Select your specifications below to receive an instant transparent cost breakdown in USD and PKR.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    <!-- Calculator Inputs (Left Side) -->
+                    <div class="lg:col-span-7 space-y-8 glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800">
+                        <!-- Step 1: Project Type -->
+                        <div>
+                            <label class="block text-slate-200 font-bold text-sm mb-3">1. Select Project Type:</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                <button onclick="selectProjectType('landing', 450, 125000)" id="proj-landing" class="calc-type-btn active p-3 rounded-xl border border-purple-500 bg-purple-500/20 text-white text-xs font-semibold text-center transition">
+                                    <i class="fa-solid fa-laptop-code block text-lg mb-1 text-purple-400"></i> Landing Page
+                                </button>
+                                <button onclick="selectProjectType('ecommerce', 950, 265000)" id="proj-ecommerce" class="calc-type-btn p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 text-xs font-semibold text-center hover:text-white transition">
+                                    <i class="fa-solid fa-cart-shopping block text-lg mb-1 text-teal-400"></i> E-Commerce
+                                </button>
+                                <button onclick="selectProjectType('webapp', 1400, 390000)" id="proj-webapp" class="calc-type-btn p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 text-xs font-semibold text-center hover:text-white transition">
+                                    <i class="fa-solid fa-layer-group block text-lg mb-1 text-cyan-400"></i> Web App / SaaS
+                                </button>
+                                <button onclick="selectProjectType('mobile', 1800, 500000)" id="proj-mobile" class="calc-type-btn p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 text-xs font-semibold text-center hover:text-white transition">
+                                    <i class="fa-solid fa-mobile-screen block text-lg mb-1 text-indigo-400"></i> Mobile App
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: UI/UX Design Level -->
+                        <div>
+                            <label class="block text-slate-200 font-bold text-sm mb-3">2. UI/UX Design Level:</label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <button onclick="selectDesignLevel('standard', 0, 0)" id="design-standard" class="calc-design-btn active p-3 rounded-xl border border-purple-500 bg-purple-500/20 text-white text-xs font-semibold transition">
+                                    Standard Clean
+                                </button>
+                                <button onclick="selectDesignLevel('custom', 250, 70000)" id="design-custom" class="calc-design-btn p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 text-xs font-semibold hover:text-white transition">
+                                    Premium Custom
+                                </button>
+                                <button onclick="selectDesignLevel('3d', 500, 140000)" id="design-3d" class="calc-design-btn p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 text-xs font-semibold hover:text-white transition">
+                                    3D / WebGL Motion
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Optional Add-ons -->
+                        <div>
+                            <label class="block text-slate-200 font-bold text-sm mb-3">3. Additional Feature Add-ons:</label>
+                            <div class="space-y-3">
+                                <label class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-slate-700">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="addon-cms" onchange="calculateProjectTotal()" class="w-4 h-4 accent-purple-500 rounded">
+                                        <span class="text-xs text-slate-300 font-medium">Headless CMS Integration (Sanity / Strapi)</span>
+                                    </div>
+                                    <span class="text-xs font-mono text-purple-400">+$200 / Rs. 55k</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-slate-700">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="addon-seo" onchange="calculateProjectTotal()" class="w-4 h-4 accent-purple-500 rounded">
+                                        <span class="text-xs text-slate-300 font-medium">Speed Optimization & Advanced Technical SEO</span>
+                                    </div>
+                                    <span class="text-xs font-mono text-purple-400">+$150 / Rs. 40k</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-slate-700">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="addon-express" onchange="calculateProjectTotal()" class="w-4 h-4 accent-purple-500 rounded">
+                                        <span class="text-xs text-slate-300 font-medium">Express Delivery (10 Days Rush Execution)</span>
+                                    </div>
+                                    <span class="text-xs font-mono text-purple-400">+$300 / Rs. 85k</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Summary Display (Right Side) -->
+                    <div class="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-2xl border border-purple-500/40 relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950 shadow-2xl">
+                        <div class="absolute -top-12 -right-12 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <h3 class="text-xl font-bold text-white mb-2">Estimated Investment</h3>
+                        <p class="text-slate-400 text-xs mb-6">Calculated in real-time based on selected requirements.</p>
+
+                        <!-- Price Box -->
+                        <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800 mb-6 text-center">
+                            <div class="text-xs text-slate-400 font-mono uppercase mb-1">Total Estimated Cost</div>
+                            <div class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-300 to-teal-300 font-mono" id="calc-price-usd">$450 USD</div>
+                            <div class="text-sm font-semibold text-slate-400 font-mono mt-1" id="calc-price-pkr">PKR 125,000 Approx.</div>
+                        </div>
+
+                        <!-- Estimated Timeline -->
+                        <div class="space-y-3 text-xs text-slate-300 mb-8 border-t border-slate-800 pt-4">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Estimated Delivery:</span>
+                                <span class="font-bold text-white font-mono" id="calc-timeline">7 - 12 Days</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Source Code Ownership:</span>
+                                <span class="font-bold text-emerald-400">100% Full Access</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Included Support:</span>
+                                <span class="font-bold text-purple-400">30 Days Post Launch</span>
+                            </div>
+                        </div>
+
+                        <button onclick="transferQuoteToContact()" class="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold text-sm shadow-lg shadow-purple-500/25 transition flex items-center justify-center gap-2">
+                            <span>Lock Estimate & Request Quote</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tiered Pricing Plans -->
+        <section id="pricing" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-mono font-bold text-purple-400 tracking-wider uppercase mb-3">Transparent Plans</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Fixed Flat-Rate Agency Pricing</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Plan 1 -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Startup Launch</h3>
+                            <p class="text-slate-400 text-xs mb-6">For single products and quick market launches.</p>
+                            <div class="text-3xl font-extrabold text-white font-mono mb-6">$499 <span class="text-xs text-slate-400 font-sans">/ project</span></div>
+                            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> High-Converting Landing Page</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Mobile Responsive Layout</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Basic Contact Form Validation</li>
+                                <li class="flex items-center gap-2 text-slate-500"><i class="fa-solid fa-xmark text-slate-600"></i> Custom CMS Backend</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="w-full py-3 text-center rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 transition">Select Startup Plan</a>
+                    </div>
+
+                    <!-- Plan 2 (Featured) -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border-2 border-purple-500 relative flex flex-col justify-between shadow-xl shadow-purple-500/10">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">Most Popular</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Growth Agency</h3>
+                            <p class="text-slate-400 text-xs mb-6">Full custom web development & design systems.</p>
+                            <div class="text-3xl font-extrabold text-white font-mono mb-6">$1,299 <span class="text-xs text-slate-400 font-sans">/ project</span></div>
+                            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Up to 8 Custom Page Views</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Full CMS & E-Commerce Integration</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Custom Interactive Calculators</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Priority 14-Day Delivery</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="w-full py-3 text-center rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg transition">Select Growth Plan</a>
+                    </div>
+
+                    <!-- Plan 3 -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Enterprise Custom</h3>
+                            <p class="text-slate-400 text-xs mb-6">Complex SaaS applications & 3D experiences.</p>
+                            <div class="text-3xl font-extrabold text-white font-mono mb-6">$2,999+ <span class="text-xs text-slate-400 font-sans">/ project</span></div>
+                            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Unlimited Web App Architecture</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> WebGL / 3D Canvas Visualizer</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Dedicated Project Lead & SLA</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 6 Months Post-Launch Support</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="w-full py-3 text-center rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 transition">Contact For Enterprise</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-24 bg-slate-950/60 border-t border-slate-800/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-mono font-bold text-teal-400 tracking-wider uppercase mb-3">Client Reviews</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Trusted by Founders Worldwide</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-center gap-1 text-amber-400 mb-4 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
+                            "Apex Studio delivered our SaaS frontend ahead of schedule. The interactive pricing estimator they built boosted our landing page conversion by 35%!"
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Client" class="w-9 h-9 rounded-full object-cover border border-purple-500">
+                            <div>
+                                <h4 class="text-white text-xs font-bold">Sophia Vance</h4>
+                                <p class="text-slate-400 text-[10px]">Founder, CloudScale Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-center gap-1 text-amber-400 mb-4 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
+                            "The design system created by Apex Studio gave our e-commerce brand a top-tier luxury look. Phenomenal developer performance and attention to detail."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Client" class="w-9 h-9 rounded-full object-cover border border-cyan-500">
+                            <div>
+                                <h4 class="text-white text-xs font-bold">Tariq Mahmood</h4>
+                                <p class="text-slate-400 text-[10px]">CEO, Nexa Retail</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-center gap-1 text-amber-400 mb-4 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
+                            "Cleanest code structure and smooth UI animations I have seen from a agency partner. Highly recommended for any serious web startup."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" alt="Client" class="w-9 h-9 rounded-full object-cover border border-teal-500">
+                            <div>
+                                <h4 class="text-white text-xs font-bold">Elena Rostova</h4>
+                                <p class="text-slate-400 text-[10px]">VP Design, FinPulse</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Discovery Call & Contact Booking System -->
+        <section id="contact" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5">
+                        <div class="inline-block px-3 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-mono mb-4 border border-purple-500/20">LET'S CONNECT</div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">Start Your Next Web Project With Apex Studio</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-8">
+                            Fill out the project scope details or schedule a discovery meeting. We reply within 2 hours with a comprehensive execution proposal.
+                        </p>
+
+                        <div class="space-y-4 text-xs">
+                            <div class="flex items-center gap-4 p-4 rounded-xl glass-panel border border-slate-800">
+                                <i class="fa-solid fa-envelope text-purple-400 text-lg"></i>
+                                <div>
+                                    <span class="text-slate-400 block">Direct Inquiry Email</span>
+                                    <span class="text-white font-mono font-semibold">hello@apexstudio.design</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 p-4 rounded-xl glass-panel border border-slate-800">
+                                <i class="fa-solid fa-location-dot text-cyan-400 text-lg"></i>
+                                <div>
+                                    <span class="text-slate-400 block">Global HQ</span>
+                                    <span class="text-white font-semibold">Karachi &bull; Remote Worldwide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Card -->
+                    <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-2xl">
+                        <form onsubmit="handleContactSubmit(event)" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Your Full Name</label>
+                                    <input type="text" id="contact-name" required placeholder="Alex Mercer" class="w-full bg-slate-950 text-white text-xs rounded-xl px-4 py-3 border border-slate-800 focus:outline-none focus:border-purple-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Email Address</label>
+                                    <input type="email" id="contact-email" required placeholder="alex@company.com" class="w-full bg-slate-950 text-white text-xs rounded-xl px-4 py-3 border border-slate-800 focus:outline-none focus:border-purple-500">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Estimated Budget (USD)</label>
+                                    <select id="contact-budget" class="w-full bg-slate-950 text-white text-xs rounded-xl px-4 py-3 border border-slate-800 focus:outline-none focus:border-purple-500">
+                                        <option value="$450 - $1,000">$450 - $1,000</option>
+                                        <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+                                        <option value="$3,000+">$3,000+</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Select Meeting Slot</label>
+                                    <input type="date" id="contact-date" required class="w-full bg-slate-950 text-white text-xs rounded-xl px-4 py-3 border border-slate-800 focus:outline-none focus:border-purple-500">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Project Brief / Scope Details</label>
+                                <textarea id="contact-message" rows="4" required placeholder="Tell us about your brand goals, required pages, and tech preferences..." class="w-full bg-slate-950 text-white text-xs rounded-xl p-4 border border-slate-800 focus:outline-none focus:border-purple-500"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold text-sm shadow-xl shadow-purple-600/25 transition">
+                                Send Proposal Request
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Detailed Case Study Modal -->
+    <div id="case-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 px-4">
+        <div class="glass-panel max-w-2xl w-full rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeCaseStudy()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 font-mono text-xs border border-purple-500/30 mb-3 inline-block" id="modal-tag">CASE STUDY</span>
+            <h3 class="text-2xl font-bold text-white mb-2" id="modal-project-title">Project Case Study</h3>
+            <p class="text-slate-400 text-xs leading-relaxed mb-6" id="modal-project-desc">Full breakdown of architectural decisions, UI redesigns, and speed optimizations.</p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 rounded-xl bg-slate-950 border border-slate-800 mb-6 font-mono text-xs">
+                <div>
+                    <span class="text-slate-500 block">Deliverable</span>
+                    <span class="text-white font-bold" id="modal-metric-1">Web Platform</span>
+                </div>
+                <div>
+                    <span class="text-slate-500 block">Timeline</span>
+                    <span class="text-cyan-400 font-bold" id="modal-metric-2">10 Days</span>
+                </div>
+                <div>
+                    <span class="text-slate-500 block">Performance</span>
+                    <span class="text-emerald-400 font-bold" id="modal-metric-3">99/100 Score</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs text-slate-300 mb-6">
+                <h4 class="font-bold text-white uppercase font-mono tracking-wider">Key Engineering Highlights:</h4>
+                <ul class="space-y-2 text-slate-400">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Responsive Single-File Architecture with modular component state.</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Integrated client-side pricing calculator engine in PKR & USD.</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Optimized image assets and glassmorphism CSS backdrop filters.</li>
+                </ul>
+            </div>
+
+            <button onclick="closeCaseStudy()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs rounded-xl border border-slate-700">
+                Close Case Study View
+            </button>
+        </div>
+    </div>
+
+    <!-- Discovery Call Modal -->
+    <div id="discovery-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 px-4">
+        <div class="glass-panel max-w-md w-full rounded-2xl p-6 border border-slate-700 shadow-2xl relative">
+            <button onclick="closeDiscoveryModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Book 15-Min Discovery Call</h3>
+            <p class="text-slate-400 text-xs mb-6">Choose a convenient time slot to discuss your product roadmap.</p>
+            <form onsubmit="handleDiscoverySubmit(event)" class="space-y-4">
+                <input type="text" required placeholder="Your Name" class="w-full bg-slate-950 border border-slate-800 text-white text-xs rounded-xl px-4 py-3">
+                <input type="email" required placeholder="Your Work Email" class="w-full bg-slate-950 border border-slate-800 text-white text-xs rounded-xl px-4 py-3">
+                <button type="submit" class="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-xl shadow-lg">
+                    Confirm Zoom Slot
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-xs py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <span class="text-lg font-bold text-white block mb-2">APEX<span class="text-purple-400">.</span>STUDIO</span>
+                    <p class="text-slate-500 text-xs leading-relaxed mb-4">
+                        Ultra-modern web engineering and brand UI/UX studio building high-performance digital applications.
+                    </p>
+                    <div class="flex items-center gap-2 text-emerald-400 font-mono text-[11px]">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Available for New Projects</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-3">Quick Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="hover:text-white transition">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-white transition">Portfolio Showcase</a></li>
+                        <li><a href="#calculator" class="hover:text-white transition">Cost Estimator</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition">Fixed Plans</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-3">Tech Stack</h4>
+                    <ul class="space-y-2 font-mono">
+                        <li><span class="text-purple-400">React.js & Next.js</span></li>
+                        <li><span class="text-cyan-400">Tailwind CSS & WebGL</span></li>
+                        <li><span class="text-teal-400">Node.js & Headless CMS</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-3">Portfolio Disclaimer</h4>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">
+                        This website is an interactive frontend demo created to showcase professional web design and development capabilities to freelance clients.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
+                <div>&copy; 2026 Apex Studio. Designed for Web Development Portfolio.</div>
+                <div class="flex gap-4 text-slate-400 text-base">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Engine -->
+    <script>
+        // 1. Mobile Drawer Navigation Toggle
+        const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+
+        mobileToggleBtn.addEventListener('click', () => {
+            mobileDrawer.classList.toggle('hidden');
+        });
+
+        function closeMobileDrawer() {
+            mobileDrawer.classList.add('hidden');
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 2. Service Drawer Toggle
+        function toggleServiceDrawer(id) {
+            const drawer = document.getElementById(`service-drawer-${id}`);
+            const arrow = document.getElementById(`service-arrow-${id}`);
+
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                drawer.classList.add('hidden');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // 3. Portfolio Category Filter
+        function filterPortfolio(category) {
+            document.querySelectorAll('.portfolio-filter-btn').forEach(btn => {
+                btn.className = 'portfolio-filter-btn px-5 py-2.5 rounded-xl text-xs font-semibold transition border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white';
+            });
+            event.target.className = 'portfolio-filter-btn active px-5 py-2.5 rounded-xl text-xs font-semibold transition border border-purple-500/50 bg-purple-500/20 text-white';
+
+            const cards = document.querySelectorAll('.portfolio-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 4. Interactive Project Cost Estimator
+        let selectedProject = { baseUsd: 450, basePkr: 125000, days: '7 - 12 Days' };
+        let selectedDesign = { addUsd: 0, addPkr: 0 };
+
+        function selectProjectType(type, usd, pkr) {
+            document.querySelectorAll('.calc-type-btn').forEach(btn => {
+                btn.className = 'calc-type-btn p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 text-xs font-semibold text-center hover:text-white transition';
+            });
+            document.getElementById(`proj-${type}`).className = 'calc-type-btn active p-3 rounded-xl border border-purple-500 bg-purple-500/20 text-white text-xs font-semibold text-center transition';
+
+            selectedProject.baseUsd = usd;
+            selectedProject.basePkr = pkr;
+
+            if (type === 'landing') selectedProject.days = '5 - 8 Days';
+            if (type === 'ecommerce') selectedProject.days = '10 - 15 Days';
+            if (type === 'webapp') selectedProject.days = '14 - 21 Days';
+            if (type === 'mobile') selectedProject.days = '20 - 30 Days';
+
+            calculateProjectTotal();
+        }
+
+        function selectDesignLevel(level, addUsd, addPkr) {
+            document.querySelectorAll('.calc-design-btn').forEach(btn => {
+                btn.className = 'calc-design-btn p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 text-xs font-semibold hover:text-white transition';
+            });
+            document.getElementById(`design-${level}`).className = 'calc-design-btn active p-3 rounded-xl border border-purple-500 bg-purple-500/20 text-white text-xs font-semibold transition';
+
+            selectedDesign.addUsd = addUsd;
+            selectedDesign.addPkr = addPkr;
+
+            calculateProjectTotal();
+        }
+
+        function calculateProjectTotal() {
+            let totalUsd = selectedProject.baseUsd + selectedDesign.addUsd;
+            let totalPkr = selectedProject.basePkr + selectedDesign.addPkr;
+
+            if (document.getElementById('addon-cms').checked) {
+                totalUsd += 200;
+                totalPkr += 55000;
+            }
+            if (document.getElementById('addon-seo').checked) {
+                totalUsd += 150;
+                totalPkr += 40000;
+            }
+            if (document.getElementById('addon-express').checked) {
+                totalUsd += 300;
+                totalPkr += 85000;
+            }
+
+            document.getElementById('calc-price-usd').innerText = `$${totalUsd.toLocaleString()} USD`;
+            document.getElementById('calc-price-pkr').innerText = `PKR ${totalPkr.toLocaleString()} Approx.`;
+            document.getElementById('calc-timeline').innerText = selectedProject.days;
+        }
+
+        function transferQuoteToContact() {
+            const usdVal = document.getElementById('calc-price-usd').innerText;
+            const messageInput = document.getElementById('contact-message');
+            messageInput.value = `Hi Apex Studio, I calculated a project estimate of ${usdVal}. Please send me an official proposal and onboarding timeline.`;
+            scrollToSection('contact');
+            showToast('Estimate transferred to Contact Form below!');
+        }
+
+        // 5. Case Study Modal Engine
+        const caseStudyData = {
+            1: {
+                title: 'NexaMart E-Commerce Platform',
+                desc: 'Headless shopping experience built for speed, dynamic cart persistence, and localized PKR pricing.',
+                metric1: 'Headless Store',
+                metric2: '8 Days',
+                metric3: '100% Client Cart Retention'
+            },
+            2: {
+                title: 'FinPulse SaaS Analytics Engine',
+                desc: 'Real-time financial telemetry dashboard with customizable widgets and sub-20ms database queries.',
+                metric1: 'SaaS Web App',
+                metric2: '14 Days',
+                metric3: '18ms Query Time'
+            },
+            3: {
+                title: 'Aether Luxury Real Estate',
+                desc: '3D WebGL property visualizer with interactive floorplan viewer and lead generation booking.',
+                metric1: '3D Brand Site',
+                metric2: '12 Days',
+                metric3: '+220% Lead Growth'
+            }
+        };
+
+        function openCaseStudy(id) {
+            const data = caseStudyData[id];
+            document.getElementById('modal-project-title').innerText = data.title;
+            document.getElementById('modal-project-desc').innerText = data.desc;
+            document.getElementById('modal-metric-1').innerText = data.metric1;
+            document.getElementById('modal-metric-2').innerText = data.metric2;
+            document.getElementById('modal-metric-3').innerText = data.metric3;
+
+            const modal = document.getElementById('case-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+
+        function closeCaseStudy() {
+            const modal = document.getElementById('case-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        // 6. Discovery Modal Functions
+        function openDiscoveryModal() {
+            const modal = document.getElementById('discovery-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+
+        function closeDiscoveryModal() {
+            const modal = document.getElementById('discovery-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function handleDiscoverySubmit(e) {
+            e.preventDefault();
+            closeDiscoveryModal();
+            showToast('Discovery Call Scheduled! Zoom link sent to your email.');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Project proposal request submitted! We will reach out within 2 hours.');
+            document.getElementById('contact-name').value = '';
+            document.getElementById('contact-email').value = '';
+            document.getElementById('contact-message').value = '';
+        }
+
+        // 7. Toast Notification Helper
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'glass-panel text-white px-4 py-3 rounded-xl border border-purple-500/50 shadow-xl text-xs flex items-center gap-3 transition-all duration-300 transform translate-y-4 opacity-0 pointer-events-auto';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i> <span>${msg}</span>`;
+
+            container.appendChild(toast);
+            setTimeout(() => toast.classList.remove('translate-y-4', 'opacity-0'), 10);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
